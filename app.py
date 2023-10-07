@@ -1,6 +1,6 @@
 from pprint import pprint
 
-from flask import Flask, request
+from flask import Flask, request, redirect
 
 app = Flask(__name__)
 
@@ -14,11 +14,9 @@ def cadastro():
     # request.form é um dicionário com os valores que foram enviados pelo formulário
     pprint(request.form)
 
-    # converte o form para um dicionário tradicional, adicona um valor qualquer e retorna o dicionário,
-    # com isso o Flask irá converter o dicionário para JSON e retornar para o front
-    resp = dict(request.form)
-    resp['nova chave'] = 'novo valor'
-    return resp, 200
+    # retorna um redirecionamento para a página inicial do form
+    response = redirect('http://localhost:5500/home.html')
+    return response
 
 
 if __name__ == '__main__':
