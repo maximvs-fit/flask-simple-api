@@ -13,7 +13,12 @@ def cadastro():
     pprint(vars(request))
     # request.form é um dicionário com os valores que foram enviados pelo formulário
     pprint(request.form)
-    return 'ok', 200
+
+    # converte o form para um dicionário tradicional, adicona um valor qualquer e retorna o dicionário,
+    # com isso o Flask irá converter o dicionário para JSON e retornar para o front
+    resp = dict(request.form)
+    resp['nova chave'] = 'novo valor'
+    return resp, 200
 
 
 if __name__ == '__main__':
