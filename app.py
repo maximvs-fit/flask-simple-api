@@ -15,8 +15,22 @@ def cadastro():
     pprint(request.form)
 
     # retorna um redirecionamento para a página inicial do form
-    response = redirect('http://localhost:5500/home.html')
+    response = redirect('http://localhost:5500/sucesso.html')
     return response
+
+
+@app.route('/teste/<nome>', methods=['post'])
+def teste_2(nome):
+    print(nome, type(nome))
+    # pprint(vars(request))
+    return {'msg': 'ok texto'}, 200
+
+@app.route('/teste/<int:id>', methods=['post'])
+def teste(id):
+    print(id, type(id))
+    # pprint(vars(request))
+    return {'msg': 'ok numero'}, 200
+
 
 
 if __name__ == '__main__':
